@@ -20,7 +20,7 @@ $ npm install -g smcli
 $ smcli COMMAND
 running command...
 $ smcli (--version)
-smcli/0.0.0 linux-x64 node-v22.9.0
+smcli/1.0.0-alpha.3 linux-x64 node-v22.9.0
 $ smcli --help [COMMAND]
 USAGE
   $ smcli COMMAND
@@ -29,9 +29,12 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`smcli hello PERSON`](#smcli-hello-person)
-* [`smcli hello world`](#smcli-hello-world)
+* [`smcli auth login`](#smcli-auth-login)
+* [`smcli auth logout`](#smcli-auth-logout)
+* [`smcli auth whoami`](#smcli-auth-whoami)
 * [`smcli help [COMMAND]`](#smcli-help-command)
+* [`smcli login`](#smcli-login)
+* [`smcli logout`](#smcli-logout)
 * [`smcli plugins`](#smcli-plugins)
 * [`smcli plugins add PLUGIN`](#smcli-plugins-add-plugin)
 * [`smcli plugins:inspect PLUGIN...`](#smcli-pluginsinspect-plugin)
@@ -42,48 +45,63 @@ USAGE
 * [`smcli plugins uninstall [PLUGIN]`](#smcli-plugins-uninstall-plugin)
 * [`smcli plugins unlink [PLUGIN]`](#smcli-plugins-unlink-plugin)
 * [`smcli plugins update`](#smcli-plugins-update)
+* [`smcli whoami`](#smcli-whoami)
 
-## `smcli hello PERSON`
+## `smcli auth login`
 
-Say hello
+login with your StateMesh credentials
 
 ```
 USAGE
-  $ smcli hello PERSON -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
+  $ smcli auth login [--browser <value>] [-i] [-e <value>]
 
 FLAGS
-  -f, --from=<value>  (required) Who is saying hello
+  -e, --expires-in=<value>  duration of token in seconds (default 30 days)
+  -i, --interactive         login with username/password
+      --browser=<value>     browser to open Login with (example: "firefox", "safari")
 
 DESCRIPTION
-  Say hello
+  login with your StateMesh credentials
 
-EXAMPLES
-  $ smcli hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+ALIASES
+  $ smcli login
 ```
 
-_See code: [src/commands/hello/index.ts](https://github.com/StateMesh/smcli/blob/v0.0.0/src/commands/hello/index.ts)_
+_See code: [src/commands/auth/login.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/login.ts)_
 
-## `smcli hello world`
+## `smcli auth logout`
 
-Say hello world
+clears local login credentials
 
 ```
 USAGE
-  $ smcli hello world
+  $ smcli auth logout
 
 DESCRIPTION
-  Say hello world
+  clears local login credentials
 
-EXAMPLES
-  $ smcli hello world
-  hello world! (./src/commands/hello/world.ts)
+ALIASES
+  $ smcli logout
 ```
 
-_See code: [src/commands/hello/world.ts](https://github.com/StateMesh/smcli/blob/v0.0.0/src/commands/hello/world.ts)_
+_See code: [src/commands/auth/logout.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/logout.ts)_
+
+## `smcli auth whoami`
+
+display the current logged in user
+
+```
+USAGE
+  $ smcli auth whoami
+
+DESCRIPTION
+  display the current logged in user
+
+ALIASES
+  $ smcli whoami
+```
+
+_See code: [src/commands/auth/whoami.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/whoami.ts)_
 
 ## `smcli help [COMMAND]`
 
@@ -104,6 +122,41 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.25/src/commands/help.ts)_
+
+## `smcli login`
+
+login with your StateMesh credentials
+
+```
+USAGE
+  $ smcli login [--browser <value>] [-i] [-e <value>]
+
+FLAGS
+  -e, --expires-in=<value>  duration of token in seconds (default 30 days)
+  -i, --interactive         login with username/password
+      --browser=<value>     browser to open Login with (example: "firefox", "safari")
+
+DESCRIPTION
+  login with your StateMesh credentials
+
+ALIASES
+  $ smcli login
+```
+
+## `smcli logout`
+
+clears local login credentials
+
+```
+USAGE
+  $ smcli logout
+
+DESCRIPTION
+  clears local login credentials
+
+ALIASES
+  $ smcli logout
+```
 
 ## `smcli plugins`
 
@@ -394,4 +447,19 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.33/src/commands/plugins/update.ts)_
+
+## `smcli whoami`
+
+display the current logged in user
+
+```
+USAGE
+  $ smcli whoami
+
+DESCRIPTION
+  display the current logged in user
+
+ALIASES
+  $ smcli whoami
+```
 <!-- commandsstop -->
