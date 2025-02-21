@@ -1,0 +1,85 @@
+{
+  "name": "smcli",
+  "description": "StateMesh CLI",
+  "version": "1.0.0-alpha.3",
+  "author": "dan.chirila",
+  "bin": {
+    "smcli": "./bin/run.js"
+  },
+  "bugs": "https://github.com/StateMesh/smcli/issues",
+  "dependencies": {
+    "@oclif/core": "^2.16.0",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^5",
+    "@heroku-cli/color": "^2.0.1",
+    "@heroku/http-call": "^5.4.0",
+    "cli-ux": "^6.0.9",
+    "debug": "^4.4.0",
+    "fs-extra": "^9.1.0",
+    "heroku-client": "^3.1.0",
+    "netrc-parser": "^3.1.6",
+    "open": "^8.4.2",
+    "uuid": "^8.3.0",
+    "yargs-parser": "^18.1.3",
+    "yargs-unparser": "^2.0.0"
+  },
+  "devDependencies": {
+    "@heroku-cli/schema": "^1.0.25",
+    "@eslint/compat": "^1",
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^2.3.28",
+    "@types/chai": "^4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "@types/supports-color": "^8.1.3",
+    "chai": "^4",
+    "eslint": "^9",
+    "eslint-config-oclif": "^6",
+    "eslint-config-prettier": "^10",
+    "mocha": "^10",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": "~20.x"
+  },
+  "files": [
+    "./bin",
+    "./dist",
+    "./oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/StateMesh/smcli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "oclif": {
+    "bin": "smcli",
+    "dirname": "smcli",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "auth": {
+        "description": "manage authentication for your StateMesh account"
+      }
+    }
+  },
+  "repository": "StateMesh/smcli",
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "npm run lint",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "types": "dist/index.d.ts"
+}
