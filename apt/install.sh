@@ -37,5 +37,5 @@ SCRIPT
   # test the CLI
   LOCATION=$(which smcli)
   echo "StateMesh CLI installed to $LOCATION"
-  smcli version
+  smcli --version
 }

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Uncomment for build
-#npm run build
-#oclif pack deb
+npm run build
+oclif pack deb
 
 
 aptly publish drop squeeze s3:smcli:release-1
