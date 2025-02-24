@@ -5,8 +5,8 @@ StateMesh CLI
 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/smcli.svg)](https://npmjs.org/package/smcli)
-[![Downloads/week](https://img.shields.io/npm/dw/smcli.svg)](https://npmjs.org/package/smcli)
+[![Version](https://img.shields.io/npm/v/smcli.svg)](https://npmjs.org/package/statemeshcli)
+[![Downloads/week](https://img.shields.io/npm/dw/smcli.svg)](https://npmjs.org/package/statemeshcli)
 
 
 <!-- toc -->
@@ -16,11 +16,11 @@ StateMesh CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g smcli
+$ npm install -g statemeshcli
 $ smcli COMMAND
 running command...
 $ smcli (--version)
-smcli/1.0.0-alpha.3 linux-x64 node-v22.9.0
+statemeshcli/1.0.0-alpha.4 linux-x64 node-v22.9.0
 $ smcli --help [COMMAND]
 USAGE
   $ smcli COMMAND
@@ -67,7 +67,7 @@ ALIASES
   $ smcli login
 ```
 
-_See code: [src/commands/auth/login.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/login.ts)_
+_See code: [src/commands/auth/login.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.4/src/commands/auth/login.ts)_
 
 ## `smcli auth logout`
 
@@ -84,7 +84,7 @@ ALIASES
   $ smcli logout
 ```
 
-_See code: [src/commands/auth/logout.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/logout.ts)_
+_See code: [src/commands/auth/logout.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.4/src/commands/auth/logout.ts)_
 
 ## `smcli auth whoami`
 
@@ -101,7 +101,7 @@ ALIASES
   $ smcli whoami
 ```
 
-_See code: [src/commands/auth/whoami.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/whoami.ts)_
+_See code: [src/commands/auth/whoami.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.4/src/commands/auth/whoami.ts)_
 
 ## `smcli help [COMMAND]`
 
