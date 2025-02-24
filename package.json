@@ -65,6 +65,11 @@
       "@oclif/plugin-help",
       "@oclif/plugin-plugins"
     ],
+    "update": {
+      "s3": {
+        "bucket": "smcli.bin"
+      }
+    },
     "topicSeparator": " ",
     "topics": {
       "auth": {
