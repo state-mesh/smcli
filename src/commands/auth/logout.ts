@@ -9,7 +9,6 @@ export default class Logout extends Command {
   async run() {
     ux.action.start('Logging out')
     await this.mesh.logout()
-    await this.config.runHook('recache', {type: 'logout'})
     ux.action.stop()
   }
 }

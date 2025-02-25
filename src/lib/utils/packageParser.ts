@@ -1,9 +1,11 @@
-const {oclif} = require('../../../package.json')
+// @ts-ignore
+const path = require('path')
+import {exists} from "../file";
 
-export function getAllVersionFlags() {
-  return [...oclif.additionalVersionFlags, '--version']
-}
-
-export function getAllHelpFlags() {
-  return [...oclif.additionalHelpFlags, '--help', 'help']
+export async function appName() {
+  const pjsonPath = path.join(process.env.PWD, 'package.json');
+  if (await exists(pjsonPath)) {
+    return require(pjsonPath).name;
+  }
+  return null;
 }

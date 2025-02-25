@@ -1,6 +1,6 @@
 // remote
 import oclif = require('@oclif/core')
-import HTTP = require('@heroku/http-call')
+import HTTP = require('./http/http')
 import netrc = require('netrc-parser')
 
 import apiClient = require('./api-client')
@@ -16,14 +16,14 @@ export const deps = {
   get cli(): typeof ux {
     return fetch('@oclif/core').ux
   },
-  get HTTP(): typeof HTTP {
-    return fetch('@heroku/http-call')
-  },
   get netrc(): typeof netrc.default {
     return fetch('netrc-parser').default
   },
 
   // local
+  get HTTP(): typeof HTTP {
+    return fetch('./http/http')
+  },
   get Mutex(): typeof mutex.Mutex {
     return fetch('./mutex').Mutex
   },

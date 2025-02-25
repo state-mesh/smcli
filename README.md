@@ -20,7 +20,7 @@ $ npm install -g smcli
 $ smcli COMMAND
 running command...
 $ smcli (--version)
-smcli/1.0.0-alpha.3 linux-x64 node-v22.9.0
+smcli/1.0.0 linux-x64 node-v22.9.0
 $ smcli --help [COMMAND]
 USAGE
   $ smcli COMMAND
@@ -29,10 +29,18 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`smcli apps delete`](#smcli-apps-delete)
+* [`smcli apps deploy`](#smcli-apps-deploy)
+* [`smcli apps info`](#smcli-apps-info)
+* [`smcli apps list`](#smcli-apps-list)
 * [`smcli auth login`](#smcli-auth-login)
 * [`smcli auth logout`](#smcli-auth-logout)
 * [`smcli auth whoami`](#smcli-auth-whoami)
+* [`smcli delete`](#smcli-delete)
+* [`smcli deploy`](#smcli-deploy)
 * [`smcli help [COMMAND]`](#smcli-help-command)
+* [`smcli info`](#smcli-info)
+* [`smcli list`](#smcli-list)
 * [`smcli login`](#smcli-login)
 * [`smcli logout`](#smcli-logout)
 * [`smcli plugins`](#smcli-plugins)
@@ -47,18 +55,97 @@ USAGE
 * [`smcli plugins update`](#smcli-plugins-update)
 * [`smcli whoami`](#smcli-whoami)
 
+## `smcli apps delete`
+
+delete an application
+
+```
+USAGE
+  $ smcli apps delete [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  delete an application
+
+ALIASES
+  $ smcli delete
+```
+
+_See code: [src/commands/apps/delete.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/apps/delete.ts)_
+
+## `smcli apps deploy`
+
+deploy to StateMesh
+
+```
+USAGE
+  $ smcli apps deploy [APPNAME] [--appName <value>] [--port <value>] [--repository <value>] [--subPath <value>]
+
+FLAGS
+  --appName=<value>     name of your application
+  --port=<value>        port exposed by your app for web ingress
+  --repository=<value>  public github.com repository of your application
+  --subPath=<value>     directory inside your repository to build
+
+DESCRIPTION
+  deploy to StateMesh
+
+ALIASES
+  $ smcli deploy
+```
+
+_See code: [src/commands/apps/deploy.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/apps/deploy.ts)_
+
+## `smcli apps info`
+
+information about an application
+
+```
+USAGE
+  $ smcli apps info [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  information about an application
+
+ALIASES
+  $ smcli info
+```
+
+_See code: [src/commands/apps/info.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/apps/info.ts)_
+
+## `smcli apps list`
+
+list applications
+
+```
+USAGE
+  $ smcli apps list
+
+DESCRIPTION
+  list applications
+
+ALIASES
+  $ smcli list
+```
+
+_See code: [src/commands/apps/list.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/apps/list.ts)_
+
 ## `smcli auth login`
 
 login with your StateMesh credentials
 
 ```
 USAGE
-  $ smcli auth login [--browser <value>] [-i] [-e <value>]
+  $ smcli auth login [--browser <value>] [-i]
 
 FLAGS
-  -e, --expires-in=<value>  duration of token in seconds (default 30 days)
-  -i, --interactive         login with username/password
-      --browser=<value>     browser to open Login with (example: "firefox", "safari")
+  -i, --interactive      login with username/password
+      --browser=<value>  browser to open Login with (example: "firefox", "safari")
 
 DESCRIPTION
   login with your StateMesh credentials
@@ -67,7 +154,7 @@ ALIASES
   $ smcli login
 ```
 
-_See code: [src/commands/auth/login.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/login.ts)_
+_See code: [src/commands/auth/login.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/auth/login.ts)_
 
 ## `smcli auth logout`
 
@@ -84,7 +171,7 @@ ALIASES
   $ smcli logout
 ```
 
-_See code: [src/commands/auth/logout.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/logout.ts)_
+_See code: [src/commands/auth/logout.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/auth/logout.ts)_
 
 ## `smcli auth whoami`
 
@@ -101,7 +188,46 @@ ALIASES
   $ smcli whoami
 ```
 
-_See code: [src/commands/auth/whoami.ts](https://github.com/StateMesh/smcli/blob/v1.0.0-alpha.3/src/commands/auth/whoami.ts)_
+_See code: [src/commands/auth/whoami.ts](https://github.com/StateMesh/smcli/blob/v1.0.0/src/commands/auth/whoami.ts)_
+
+## `smcli delete`
+
+delete an application
+
+```
+USAGE
+  $ smcli delete [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  delete an application
+
+ALIASES
+  $ smcli delete
+```
+
+## `smcli deploy`
+
+deploy to StateMesh
+
+```
+USAGE
+  $ smcli deploy [APPNAME] [--appName <value>] [--port <value>] [--repository <value>] [--subPath <value>]
+
+FLAGS
+  --appName=<value>     name of your application
+  --port=<value>        port exposed by your app for web ingress
+  --repository=<value>  public github.com repository of your application
+  --subPath=<value>     directory inside your repository to build
+
+DESCRIPTION
+  deploy to StateMesh
+
+ALIASES
+  $ smcli deploy
+```
 
 ## `smcli help [COMMAND]`
 
@@ -123,18 +249,50 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.25/src/commands/help.ts)_
 
+## `smcli info`
+
+information about an application
+
+```
+USAGE
+  $ smcli info [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  information about an application
+
+ALIASES
+  $ smcli info
+```
+
+## `smcli list`
+
+list applications
+
+```
+USAGE
+  $ smcli list
+
+DESCRIPTION
+  list applications
+
+ALIASES
+  $ smcli list
+```
+
 ## `smcli login`
 
 login with your StateMesh credentials
 
 ```
 USAGE
-  $ smcli login [--browser <value>] [-i] [-e <value>]
+  $ smcli login [--browser <value>] [-i]
 
 FLAGS
-  -e, --expires-in=<value>  duration of token in seconds (default 30 days)
-  -i, --interactive         login with username/password
-      --browser=<value>     browser to open Login with (example: "firefox", "safari")
+  -i, --interactive      login with username/password
+      --browser=<value>  browser to open Login with (example: "firefox", "safari")
 
 DESCRIPTION
   login with your StateMesh credentials

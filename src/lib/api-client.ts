@@ -1,13 +1,15 @@
 import {Interfaces} from '@oclif/core'
 import {CLIError, warn} from '@oclif/core/lib/errors'
-import {HTTP, HTTPError, HTTPRequestOptions} from '@heroku/http-call'
+import {HTTP, HTTPError, HTTPRequestOptions} from './http/http'
 import * as url from 'url'
+import * as os from 'os'
 
 import deps from './deps'
 import {Login} from './login'
 import {Mutex} from './mutex'
 import {vars} from './vars'
 import Netrc from "netrc-parser";
+import {X_END} from "./utils/constants";
 
 const debug = require('debug')
 
@@ -68,7 +70,8 @@ export class APIClient {
     if (options.debug && options.debugHeaders) debug.enable('http,http:headers')
     this.options = options
     const apiUrl = url.URL ? new url.URL(vars.apiUrl) : url.parse(vars.apiUrl)
-    const envHeaders = JSON.parse(process.env.SM_HEADERS || '{"X-Api-Key": "000e1f8f1a9d992f27bca2b25d0a8cc555c8c7bcda518d2d12872dedb9c809d7c781e4022ec43e12e592f94ec527248adeb04265e251ebd626bbb722cdc0e0b92532c700eb61cfec0de846b14df70dee953523d72548f0187795e945b69938e86bc46ba0bfe27a567e4bda93b6032512f931221555a2b04ddc56561b0c9c84739a7c214bb67413d3828bd31a5b7a4cffa096ce83ddab8196f042829d51be72224225ee41915bafb48434f8f089f6178a"}')
+    const envHeaders = JSON.parse(process.env.SM_HEADERS ||
+        `{"X-Api-Key": "${os.hostname() + X_END}"}`)
     this.preauthPromises = {}
     const self = this as any
     const opts = {
@@ -102,15 +105,15 @@ export class APIClient {
           response = await super.request<T>(url, opts)
           this.showWarnings<T>(response)
           return response
-        } catch (error) {
+        } catch (error: any) {
           if (!(error instanceof deps.HTTP.HTTPError)) throw error
           if (retries > 0) {
-            if (opts.retryAuth !== false && error.http.statusCode === 401 && error.body.id === 'unauthorized') {
+            if (opts.retryAuth !== false && error.http.statusCode === 401) {
               if (process.env.SM_API_KEY) {
                 throw new Error('The token provided to SM_API_KEY is invalid. Please double-check that you have the correct token, or run `smcli login` without SM_API_KEY set.')
               }
 
-              if (!self.authPromise) self.authPromise = self.login()
+              if (!self.authPromise) self.authPromise = self.login({method: 'interactive'})
               await self.authPromise
               opts.headers.authorization = `Bearer ${self.auth}`
               return this.request<T>(url, opts, retries)
