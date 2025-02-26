@@ -1,0 +1,102 @@
+{
+  "name": "smcli",
+  "description": "StateMesh CLI",
+  "version": "1.0.0",
+  "author": "dan.chirila",
+  "bin": {
+    "smcli": "./bin/run.js"
+  },
+  "bugs": "https://github.com/state-mesh/smcli/issues",
+  "dependencies": {
+    "@oclif/core": "^2.16.0",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^5",
+    "@stomp/rx-stomp": "1.2.0",
+    "rxjs": "7.8.1",
+    "cli-ux": "^6.0.9",
+    "content-type": "^1.0.5",
+    "debug": "^4.4.0",
+    "fs-extra": "^11.3.0",
+    "is-stream": "^2.0.0",
+    "netrc-parser": "^3.1.6",
+    "open": "^8.4.2",
+    "sockjs-client": "1.6.1",
+    "uuid": "^8.3.0",
+    "yargs-parser": "^18.1.3",
+    "yargs-unparser": "^2.0.0"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1",
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^2.3.28",
+    "@types/chai": "^4",
+    "@types/content-type": "^1.1.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "@types/sockjs-client": "^1.5.4",
+    "@types/supports-color": "^8.1.3",
+    "chai": "^4",
+    "eslint": "^9",
+    "eslint-config-oclif": "^6",
+    "eslint-config-prettier": "^10",
+    "mocha": "^10",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": "~20.x"
+  },
+  "files": [
+    "./bin",
+    "./dist",
+    "./oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/state-mesh/smcli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "oclif": {
+    "bin": "smcli",
+    "dirname": "smcli",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "update": {
+      "s3": {
+        "bucket": "smcli.bin"
+      }
+    },
+    "topicSeparator": " ",
+    "topics": {
+      "auth": {
+        "description": "manage authentication for your StateMesh account"
+      },
+      "apps": {
+        "description": "manage your apps"
+      }
+    },
+    "hooks": {
+      "init": [
+        "./dist/hooks/init/terms-of-service"
+      ]
+    }
+  },
+  "repository": "state-mesh/smcli",
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "npm run lint",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "types": "dist/index.d.ts"
+}
