@@ -7,7 +7,7 @@ export default class Join extends Command {
 
   async run() {
     const {execSync: exec} = require('child_process');
-    exec(`k3s-uninstall.sh`,
+    exec(`k3s-agent-uninstall.sh`,
         {
           encoding: 'utf8',
           stdio: 'inherit'

@@ -9,9 +9,7 @@ import {vars} from './vars'
 import {API_BASE, LOGIN_BASE, X_END} from "./utils/constants";
 import open = require('open');
 
-const debug = require('debug')('sm-cli-command')
 const hostname = os.hostname()
-const thirtyDays = 60 * 60 * 24 * 30
 
 export namespace Login {
   export interface Options {
@@ -88,14 +86,20 @@ export class Login {
       urlDisplayed = true
     }
 
-    const cp = await open(url, {wait: true, ...(browser ? {app: {name: browser}} : {})})
-    cp.on('error', err => {
-      ux.warn(err)
-      showUrl()
-    })
-    cp.on('close', code => {
-      if (code !== 0) showUrl()
-    })
+    try {
+      const cp = await open(url, {wait: true, ...(browser ? {app: {name: browser}} : {})})
+      cp.on('error', err => {
+        ux.warn(err)
+        showUrl()
+      })
+      cp.on('close', code => {
+        if (code !== 0) showUrl()
+      })
+    } catch(error) {
+      ux.warn('Could not open browser. Falling back to interactive login');
+      return await this.interactive();
+    }
+
     ux.action.start('StateMesh: Waiting for login')
     const fetchAuth = async (): Promise<{error?: string, access_token: string}> => {
       try {
