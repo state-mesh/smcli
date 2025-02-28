@@ -33,6 +33,8 @@ USAGE
 * [`smcli apps deploy`](#smcli-apps-deploy)
 * [`smcli apps info`](#smcli-apps-info)
 * [`smcli apps list`](#smcli-apps-list)
+* [`smcli apps logs`](#smcli-apps-logs)
+* [`smcli apps terminal`](#smcli-apps-terminal)
 * [`smcli auth login`](#smcli-auth-login)
 * [`smcli auth logout`](#smcli-auth-logout)
 * [`smcli auth whoami`](#smcli-auth-whoami)
@@ -40,9 +42,14 @@ USAGE
 * [`smcli deploy`](#smcli-deploy)
 * [`smcli help [COMMAND]`](#smcli-help-command)
 * [`smcli info`](#smcli-info)
+* [`smcli join`](#smcli-join)
+* [`smcli leave`](#smcli-leave)
 * [`smcli list`](#smcli-list)
 * [`smcli login`](#smcli-login)
 * [`smcli logout`](#smcli-logout)
+* [`smcli logs`](#smcli-logs)
+* [`smcli node join`](#smcli-node-join)
+* [`smcli node leave`](#smcli-node-leave)
 * [`smcli plugins`](#smcli-plugins)
 * [`smcli plugins add PLUGIN`](#smcli-plugins-add-plugin)
 * [`smcli plugins:inspect PLUGIN...`](#smcli-pluginsinspect-plugin)
@@ -53,6 +60,7 @@ USAGE
 * [`smcli plugins uninstall [PLUGIN]`](#smcli-plugins-uninstall-plugin)
 * [`smcli plugins unlink [PLUGIN]`](#smcli-plugins-unlink-plugin)
 * [`smcli plugins update`](#smcli-plugins-update)
+* [`smcli terminal`](#smcli-terminal)
 * [`smcli whoami`](#smcli-whoami)
 
 ## `smcli apps delete`
@@ -134,6 +142,46 @@ ALIASES
 ```
 
 _See code: [src/commands/apps/list.ts](https://github.com/state-mesh/smcli/blob/v1.0.0/src/commands/apps/list.ts)_
+
+## `smcli apps logs`
+
+view application logs
+
+```
+USAGE
+  $ smcli apps logs [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  view application logs
+
+ALIASES
+  $ smcli logs
+```
+
+_See code: [src/commands/apps/logs.ts](https://github.com/state-mesh/smcli/blob/v1.0.0/src/commands/apps/logs.ts)_
+
+## `smcli apps terminal`
+
+connect to application terminal
+
+```
+USAGE
+  $ smcli apps terminal [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  connect to application terminal
+
+ALIASES
+  $ smcli terminal
+```
+
+_See code: [src/commands/apps/terminal.ts](https://github.com/state-mesh/smcli/blob/v1.0.0/src/commands/apps/terminal.ts)_
 
 ## `smcli auth login`
 
@@ -267,6 +315,36 @@ ALIASES
   $ smcli info
 ```
 
+## `smcli join`
+
+add this device to StateMesh network and become a node operator
+
+```
+USAGE
+  $ smcli join
+
+DESCRIPTION
+  add this device to StateMesh network and become a node operator
+
+ALIASES
+  $ smcli join
+```
+
+## `smcli leave`
+
+remove this device from StateMesh network
+
+```
+USAGE
+  $ smcli leave
+
+DESCRIPTION
+  remove this device from StateMesh network
+
+ALIASES
+  $ smcli leave
+```
+
 ## `smcli list`
 
 list applications
@@ -315,6 +393,58 @@ DESCRIPTION
 ALIASES
   $ smcli logout
 ```
+
+## `smcli logs`
+
+view application logs
+
+```
+USAGE
+  $ smcli logs [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  view application logs
+
+ALIASES
+  $ smcli logs
+```
+
+## `smcli node join`
+
+add this device to StateMesh network and become a node operator
+
+```
+USAGE
+  $ smcli node join
+
+DESCRIPTION
+  add this device to StateMesh network and become a node operator
+
+ALIASES
+  $ smcli join
+```
+
+_See code: [src/commands/node/join.ts](https://github.com/state-mesh/smcli/blob/v1.0.0/src/commands/node/join.ts)_
+
+## `smcli node leave`
+
+remove this device from StateMesh network
+
+```
+USAGE
+  $ smcli node leave
+
+DESCRIPTION
+  remove this device from StateMesh network
+
+ALIASES
+  $ smcli leave
+```
+
+_See code: [src/commands/node/leave.ts](https://github.com/state-mesh/smcli/blob/v1.0.0/src/commands/node/leave.ts)_
 
 ## `smcli plugins`
 
@@ -605,6 +735,24 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.33/src/commands/plugins/update.ts)_
+
+## `smcli terminal`
+
+connect to application terminal
+
+```
+USAGE
+  $ smcli terminal [ID] [--id <value>]
+
+FLAGS
+  --id=<value>  id of your application
+
+DESCRIPTION
+  connect to application terminal
+
+ALIASES
+  $ smcli terminal
+```
 
 ## `smcli whoami`
 

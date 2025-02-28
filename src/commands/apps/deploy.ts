@@ -49,7 +49,7 @@ export default class Deploy extends Command {
 
     if (!flags.port) {
       await ux.anykey(`You didn't specify any port with the --port flag. \n` +
-      `You must set the port your app listens on, or will assume ${color.green('3000')} as default. Press any key to continue like this or ${color.yellow('q')} to exit`);
+      `You must set the port your app listens on, or will assume ${color.green('80')} as default. Press any key to continue like this or ${color.yellow('q')} to exit`);
     }
 
     ux.action.start("Building")

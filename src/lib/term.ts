@@ -25,9 +25,9 @@ export class Term {
                     const body = JSON.parse(message.body);
                     if (body?.type) {
                         if (body.type === "timeout") {
-                            ux.error('Connection timed out');
+                            ux.log('Connection timed out');
                         } else if (body.type === "disconnect") {
-                            ux.error('Disconnected');
+                            ux.log('Disconnected');
                         }
                         return;
                     }

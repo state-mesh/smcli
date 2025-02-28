@@ -33,9 +33,9 @@ export class Logger {
                     const logsArray = Array.isArray(logs) ? logs : [logs];
                     if (logsArray.length === 1 && logsArray[0]?.type) {
                         if (logsArray[0].type === "timeout") {
-                            ux.error('Connection timed out');
+                            ux.log('Connection timed out');
                         } else if (logsArray[0].type === "disconnect") {
-                            ux.error('Disconnected');
+                            ux.log('Disconnected. Try again');
                         }
                         return;
                     }
