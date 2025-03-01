@@ -16,7 +16,7 @@ StateMesh CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g smcli
+$ npm install -g statemeshcli
 $ smcli COMMAND
 running command...
 $ smcli (--version)
