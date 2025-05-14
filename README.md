@@ -20,7 +20,7 @@ $ npm install -g statemeshcli
 $ smcli COMMAND
 running command...
 $ smcli (--version)
-smcli/2.0.1 linux-x64 node-v22.9.0
+smcli/2.1.1 linux-x64 node-v20.5.0
 $ smcli --help [COMMAND]
 USAGE
   $ smcli COMMAND
@@ -29,6 +29,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`smcli apps copy`](#smcli-apps-copy)
 * [`smcli apps delete`](#smcli-apps-delete)
 * [`smcli apps deploy`](#smcli-apps-deploy)
 * [`smcli apps info`](#smcli-apps-info)
@@ -43,6 +44,8 @@ USAGE
 * [`smcli auth login`](#smcli-auth-login)
 * [`smcli auth logout`](#smcli-auth-logout)
 * [`smcli auth whoami`](#smcli-auth-whoami)
+* [`smcli copy`](#smcli-copy)
+* [`smcli cp`](#smcli-cp)
 * [`smcli delete`](#smcli-delete)
 * [`smcli deploy`](#smcli-deploy)
 * [`smcli help [COMMAND]`](#smcli-help-command)
@@ -73,6 +76,29 @@ USAGE
 * [`smcli terminal`](#smcli-terminal)
 * [`smcli whoami`](#smcli-whoami)
 
+## `smcli apps copy`
+
+copy files to and from app containers
+
+```
+USAGE
+  $ smcli apps copy [LOCALPATH] --id <value> --path <value> [--cid <value>]
+
+FLAGS
+  --cid=<value>   id of your container
+  --id=<value>    (required) id of your application
+  --path=<value>  (required) path inside the container
+
+DESCRIPTION
+  copy files to and from app containers
+
+ALIASES
+  $ smcli copy
+  $ smcli cp
+```
+
+_See code: [src/commands/apps/copy.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/copy.ts)_
+
 ## `smcli apps delete`
 
 delete an application
@@ -91,7 +117,7 @@ ALIASES
   $ smcli delete
 ```
 
-_See code: [src/commands/apps/delete.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/delete.ts)_
+_See code: [src/commands/apps/delete.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/delete.ts)_
 
 ## `smcli apps deploy`
 
@@ -114,7 +140,7 @@ ALIASES
   $ smcli deploy
 ```
 
-_See code: [src/commands/apps/deploy.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/deploy.ts)_
+_See code: [src/commands/apps/deploy.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/deploy.ts)_
 
 ## `smcli apps info`
 
@@ -134,7 +160,7 @@ ALIASES
   $ smcli info
 ```
 
-_See code: [src/commands/apps/info.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/info.ts)_
+_See code: [src/commands/apps/info.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/info.ts)_
 
 ## `smcli apps install`
 
@@ -157,7 +183,7 @@ ALIASES
   $ smcli install
 ```
 
-_See code: [src/commands/apps/install.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/install.ts)_
+_See code: [src/commands/apps/install.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/install.ts)_
 
 ## `smcli apps list`
 
@@ -174,7 +200,7 @@ ALIASES
   $ smcli list
 ```
 
-_See code: [src/commands/apps/list.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/list.ts)_
+_See code: [src/commands/apps/list.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/list.ts)_
 
 ## `smcli apps logs`
 
@@ -194,7 +220,7 @@ ALIASES
   $ smcli logs
 ```
 
-_See code: [src/commands/apps/logs.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/logs.ts)_
+_See code: [src/commands/apps/logs.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/logs.ts)_
 
 ## `smcli apps restart`
 
@@ -214,7 +240,7 @@ ALIASES
   $ smcli restart
 ```
 
-_See code: [src/commands/apps/restart.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/restart.ts)_
+_See code: [src/commands/apps/restart.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/restart.ts)_
 
 ## `smcli apps scale`
 
@@ -235,7 +261,7 @@ ALIASES
   $ smcli scale
 ```
 
-_See code: [src/commands/apps/scale.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/scale.ts)_
+_See code: [src/commands/apps/scale.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/scale.ts)_
 
 ## `smcli apps start`
 
@@ -255,7 +281,7 @@ ALIASES
   $ smcli start
 ```
 
-_See code: [src/commands/apps/start.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/start.ts)_
+_See code: [src/commands/apps/start.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/start.ts)_
 
 ## `smcli apps stop`
 
@@ -275,7 +301,7 @@ ALIASES
   $ smcli stop
 ```
 
-_See code: [src/commands/apps/stop.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/stop.ts)_
+_See code: [src/commands/apps/stop.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/stop.ts)_
 
 ## `smcli apps terminal`
 
@@ -295,7 +321,7 @@ ALIASES
   $ smcli terminal
 ```
 
-_See code: [src/commands/apps/terminal.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/apps/terminal.ts)_
+_See code: [src/commands/apps/terminal.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/apps/terminal.ts)_
 
 ## `smcli auth login`
 
@@ -316,7 +342,7 @@ ALIASES
   $ smcli login
 ```
 
-_See code: [src/commands/auth/login.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/auth/login.ts)_
+_See code: [src/commands/auth/login.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/auth/login.ts)_
 
 ## `smcli auth logout`
 
@@ -333,7 +359,7 @@ ALIASES
   $ smcli logout
 ```
 
-_See code: [src/commands/auth/logout.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/auth/logout.ts)_
+_See code: [src/commands/auth/logout.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/auth/logout.ts)_
 
 ## `smcli auth whoami`
 
@@ -350,7 +376,49 @@ ALIASES
   $ smcli whoami
 ```
 
-_See code: [src/commands/auth/whoami.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/auth/whoami.ts)_
+_See code: [src/commands/auth/whoami.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/auth/whoami.ts)_
+
+## `smcli copy`
+
+copy files to and from app containers
+
+```
+USAGE
+  $ smcli copy [LOCALPATH] --id <value> --path <value> [--cid <value>]
+
+FLAGS
+  --cid=<value>   id of your container
+  --id=<value>    (required) id of your application
+  --path=<value>  (required) path inside the container
+
+DESCRIPTION
+  copy files to and from app containers
+
+ALIASES
+  $ smcli copy
+  $ smcli cp
+```
+
+## `smcli cp`
+
+copy files to and from app containers
+
+```
+USAGE
+  $ smcli cp [LOCALPATH] --id <value> --path <value> [--cid <value>]
+
+FLAGS
+  --cid=<value>   id of your container
+  --id=<value>    (required) id of your application
+  --path=<value>  (required) path inside the container
+
+DESCRIPTION
+  copy files to and from app containers
+
+ALIASES
+  $ smcli copy
+  $ smcli cp
+```
 
 ## `smcli delete`
 
@@ -562,7 +630,7 @@ ALIASES
   $ smcli join
 ```
 
-_See code: [src/commands/node/join.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/node/join.ts)_
+_See code: [src/commands/node/join.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/node/join.ts)_
 
 ## `smcli node leave`
 
@@ -579,7 +647,7 @@ ALIASES
   $ smcli leave
 ```
 
-_See code: [src/commands/node/leave.ts](https://github.com/state-mesh/smcli/blob/v2.0.1/src/commands/node/leave.ts)_
+_See code: [src/commands/node/leave.ts](https://github.com/state-mesh/smcli/blob/v2.1.1/src/commands/node/leave.ts)_
 
 ## `smcli plugins`
 
