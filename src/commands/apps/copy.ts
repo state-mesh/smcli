@@ -14,6 +14,7 @@ export default class Info extends Command {
     id: flags.string({description: 'id of your application', required: true}),
     cid: flags.string({description: 'id of your container'}),
     path: flags.string({description: 'path inside the container', required: true}),
+    localPath: flags.string({description: 'local path for the downloaded file'}),
   }
 
   static args = {
@@ -36,8 +37,9 @@ export default class Info extends Command {
         await new AppUtils(this.mesh).uploadFile(file, flags.id, flags.path, flags.cid);
         ux.action.stop();
       } else { // Download
-        ux.action.start('Downloading');
-        await new AppUtils(this.mesh).downloadFile(flags.id, flags.path, flags.cid);
+        const destinationPath = flags.localPath ? flags.localPath : __dirname;
+        ux.action.start('Downloading to ' + destinationPath);
+        await new AppUtils(this.mesh).downloadFile(destinationPath, flags.id, flags.path, flags.cid);
         ux.action.stop();
       }
     } else {

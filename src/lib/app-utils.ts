@@ -45,7 +45,7 @@ export class AppUtils {
         });
     }
 
-    async downloadFile(applicationId: string, containerPath: string, containerId?: string) {
+    async downloadFile(destinationPath: string, applicationId: string, containerPath: string, containerId?: string) {
         const finished = promisify(stream.finished);
         const response = await axios({
             method: "get",
@@ -61,7 +61,7 @@ export class AppUtils {
         const quoted = contentDisposition.split(";")[1].split("=")[1];
         const fileName = quoted.substring(1, quoted.length - 1);
 
-        const writer = createWriteStream(require('path').join(__dirname, fileName));
+        const writer = createWriteStream(require('path').join(destinationPath, fileName));
         response.data.pipe(writer);
         return finished(writer);
     }
