@@ -18,6 +18,5 @@ export function readdir(f: string): Promise<string[]> {
 }
 
 export function readFile(f: string) {
-  debug('readFile', f)
   return promisify(fs.readFile)(f)
 }

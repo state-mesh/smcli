@@ -33,6 +33,12 @@ export default class Info extends Command {
       ux.log("Status: " + (apps[0].status ? apps[0].status : "-"));
       ux.log("Stage: " + (apps[0].stage ? apps[0].stage : "-"));
       ux.log("Public URL: " + (apps[0].ingressHostName ? `https://${color.green(apps[0].ingressHostName)}` : `-`));
+      if (apps[0].containers?.length) {
+        ux.log("Containers: ");
+        apps[0].containers.forEach((container: any) => {
+          ux.log("  * " + container.imageName + ' | ' + container.id);
+        });
+      }
     } else {
       ux.error(`Application with id ${id} was not found on your profile`);
     }
