@@ -37,7 +37,7 @@ export default class Info extends Command {
         await new AppUtils(this.mesh).uploadFile(file, flags.id, flags.path, flags.cid);
         ux.action.stop();
       } else { // Download
-        const destinationPath = flags.localPath ? flags.localPath : __dirname;
+        const destinationPath = flags.localPath ? flags.localPath : ".";
         ux.action.start('Downloading to ' + destinationPath);
         await new AppUtils(this.mesh).downloadFile(destinationPath, flags.id, flags.path, flags.cid);
         ux.action.stop();
